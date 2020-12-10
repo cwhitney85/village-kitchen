@@ -3,11 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createStore } from 'redux';
+import allReducers from './reducers/index'
+import { Provider } from 'react-redux';
+
+const store = createStore(
+  allReducers, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+// Store - a globalized state with access from all components
+
+
+// Action - a function that returns an object
+
+
+// Reducer - a function used to update the store baeed on its corresponding action
+
+
+// Dispatch -> Action -> Reducer -> Update Store 
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
