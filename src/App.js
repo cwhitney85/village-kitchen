@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {increment, decrement} from './actions/index';
 import Home from './components/Home';
 import Navigation from './components/Nav';
+import Login from './components/Login';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
       <Container>
         <Switch>
           <Route path="/" exact component={Home}/>
+          <Route path="/login" component={Login}/>
         </Switch>
       </Container>
     </Router>

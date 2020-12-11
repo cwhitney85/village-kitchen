@@ -4,8 +4,8 @@ import Nav from 'react-bootstrap/Nav'
 
 export default function Navigation() {
   return (
-    <Navbar bg="primary" >
-      <Navbar.Brand href="/">Village Kitchen</Navbar.Brand>
+    <Navbar className="top-nav">
+      <Navbar.Brand href="/" style={{fontFamily: "cursive"}}>Village Kitchen</Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
         <Nav className="flex-row">
           <Nav.Link href="/login">Log In</Nav.Link>
