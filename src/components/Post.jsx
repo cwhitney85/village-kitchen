@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react'
+import { connect, useSelector, useDispatch } from 'react-redux'
+import { fetchPosts } from '../actions/index'
 
-export default function Post() {
+// const mapStateToProps = state => ({
+//   posts: state.post.items
+// })
+
+
+function Post() {
   
-  const [posts, setPosts] = useState()
-  const [test, setTest] = useState(true)
-  const switchTest = () => {
-    setTest(!test)
-  }
+  // const [posts, setPosts] = useState()
+  // const [test, setTest] = useState(true)
+  // const switchTest = () => {
+  //   setTest(!test)
+  // }
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res => res.json())
-    .then(data => setPosts(data))
+    // dispatch(fetchPosts())
+    console.log('test')
   }, [])
 
   let postsToRender;
-  if (posts) {
-    postsToRender = posts.map(post => (
+  if (this.props.posts) {
+    postsToRender = this.props.posts.map(post => (
       <div>
         <h3>{post.title}</h3>
         <p>{post.body}</p>
@@ -26,8 +34,16 @@ export default function Post() {
   return (
     <div>
       <h1>Posts</h1>
-      {test ? <h3 onClick={switchTest}>Test</h3> : ''}
       { postsToRender }
     </div>
   )
 }
+
+const mapStateToProps = state => {
+  return {
+    posts: state.post.items
+  }
+  
+}
+
+export default connect(mapStateToProps, { fetchPosts })(Post)

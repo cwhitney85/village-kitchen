@@ -15,9 +15,6 @@ export default function App() {
       <button onClick={() => dispatch(increment(5))}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
       
-      <Postform/>
-      <hr/>
-      <Post/>
     </div>
   )
 }
