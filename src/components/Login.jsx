@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form'
 export default function Login() {
   return (
     <Form>
-      <Form.Group controlId="username">
-        <Form.Label>Username</Form.Label>
-        <Form.Control type="text" />
+      <Form.Group controlId="email">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" />
       </Form.Group>
       <Form.Group controlId="password">
         <Form.Label>Password</Form.Label>

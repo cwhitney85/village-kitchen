@@ -5,13 +5,21 @@ import Button from 'react-bootstrap/Button'
 export default function Register() {
   return (
     <Form>
-      <Form.Group controlId="username">
-        <Form.Label>Username</Form.Label>
+      <Form.Group controlId="firstName">
+        <Form.Label>First Name:</Form.Label>
+        <Form.Control type="text" />
+      </Form.Group>
+      <Form.Group controlId="lastName">
+        <Form.Label>Last Name:</Form.Label>
         <Form.Control type="text" />
       </Form.Group>
       <Form.Group controlId="email">
         <Form.Label>Email</Form.Label>
         <Form.Control type="email" />
+      </Form.Group>
+      <Form.Group controlId="address">
+        <Form.Label>Address:</Form.Label>
+        <Form.Control type="text" />
       </Form.Group>
       <Form.Group controlId="password">
         <Form.Label>Password</Form.Label>

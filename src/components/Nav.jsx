@@ -1,14 +1,14 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-
+import chef from '../chef.svg'
 
 export default function Navigation() {
   return (
     <Navbar className="top-nav">
       <Navbar.Brand href="/" style={{fontFamily: "cursive"}}>
         <img 
-          src="../../public/chef-hot-22.svg"
+          src={chef}
           width="30"
           height="30"
           className="d-inline-block align-top"
