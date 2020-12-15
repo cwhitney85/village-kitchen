@@ -20,10 +20,13 @@ export default function App() {
       <Navigation/>
       <Container>
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          {/* <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register}/>
-          <Route path="/newcook" component={NewCook}/>
+          <Route path="/newcook" component={NewCook}/> */}
         </Switch>
       </Container>
     </Router>
