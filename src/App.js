@@ -14,11 +14,6 @@ export default function App() {
   const islogged = useSelector(state => state.islogged)
   const dispatch = useDispatch();
 
-  // const loginSubmit = (e) => {
-  //   e.preventDefault()
-  //   dispatch(login())
-  // }
-
   return (
     <Router>
       <Navigation/>
