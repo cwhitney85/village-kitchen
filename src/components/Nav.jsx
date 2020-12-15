@@ -1,4 +1,5 @@
 import React from 'react'
+import {LinkContainer} from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { logout } from '../actions/index'
@@ -13,27 +14,36 @@ export default function Navigation() {
   const history = useHistory()
 
   return (
-    <Navbar onClick={()=> history.push('/')} className="top-nav brand">
-      <Navbar.Brand style={{fontFamily: "cursive"}}>
-        <img 
-          src={chef}
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-          
-        />{' '}
-        Village Kitchen</Navbar.Brand>
+    <Navbar className="top-nav brand">
+      <LinkContainer to="/" style={{fontFamily: "cursive"}}>
+        <Navbar.Brand >
+          <img 
+            src={chef}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+            alt="village kitchen logo"
+          />{' '}
+          Village Kitchen
+        </Navbar.Brand>
+      </LinkContainer>
       <Navbar.Collapse className="justify-content-end">
         <Nav className="flex-row test">
           {user
           ? <>
             <Navbar.Text className="userFirstName">Hi, {user.first_name}</Navbar.Text>
-            <Nav.Link>Become a Cook!</Nav.Link>
+            <LinkContainer to="/newcook">
+              <Nav.Link>Become a Cook!</Nav.Link>
+            </LinkContainer>
             <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
             </>
           : <>
-            <Nav.Link href="/login">Log In</Nav.Link>
-            <Nav.Link href="/register">Sign Up</Nav.Link>
+            <LinkContainer to="/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/register">
+              <Nav.Link>Sign Up</Nav.Link>
+            </LinkContainer>
             </>}
         </Nav>
       </Navbar.Collapse>
