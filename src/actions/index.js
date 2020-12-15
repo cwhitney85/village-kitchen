@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export const increment = (num) => {
   return {
     type: 'INCREMENT',
@@ -37,14 +39,30 @@ export const fetchUserFailure = (error) => {
   }
 }
 
-export const fetchPosts = () => dispatch => {
-  console.log('fetching')
-  fetch('https://jsonplaceholder.typicode.com/posts')
-  .then(res => res.json())
-  .then(posts => 
-    dispatch({
-      type: 'FETCH_POSTS',
-      payload: posts
-    })
-  )
+export const fetchUser = () => {
+  return (dispatch) => {
+    dispatch(fetchUserRequest())
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(response => {
+        // response.data is an array of users
+        
+        dispatch(fetchUserSuccess(user))
+      })
+      .catch(error => {
+        // error.message is the error description
+        dispatch(fetchUserFailure(error.message))
+      })
+  }
 }
+
+// export const fetchPosts = () => dispatch => {
+//   console.log('fetching')
+//   fetch('https://jsonplaceholder.typicode.com/posts')
+//   .then(res => res.json())
+//   .then(posts => 
+//     dispatch({
+//       type: 'FETCH_POSTS',
+//       payload: posts
+//     })
+//   )
+// }

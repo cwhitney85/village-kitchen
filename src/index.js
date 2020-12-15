@@ -1,18 +1,12 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import ReactDOM from 'react-dom';
+// import thunk from 'redux-thunk';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
-import allReducers from './reducers/index'
-import { Provider } from 'react-redux';
-
-
-const store = createStore(
-  allReducers, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 // Store - a globalized state with access from all components
 

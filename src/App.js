@@ -29,7 +29,6 @@ export default function App() {
           <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register}/>
-          <Route path="/counter" component={Counter}/>
         </Switch>
       </Container>
     </Router>

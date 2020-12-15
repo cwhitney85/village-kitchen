@@ -1,6 +1,6 @@
 const initialState = {
   loading: false,
-  user: {},
+  user: [],
   error: ''
 }
 
@@ -20,12 +20,14 @@ const userReducer = (state = initialState, action) => {
     case 'FETCH_USER_FAILURE':
       return {
         loading: false,
-        user: {},
+        user: [],
         error: action.payload
       }
     default:
       return state
   }
 }
+
+
 
 export default userReducer
