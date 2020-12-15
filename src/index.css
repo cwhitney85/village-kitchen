@@ -25,3 +25,7 @@ form {
 .userFirstName {
   margin-right: 10px;
 }
+
+.brand {
+  cursor: pointer;
+}

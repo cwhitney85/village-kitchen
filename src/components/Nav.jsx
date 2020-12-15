@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { logout } from '../actions/index'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -9,10 +10,11 @@ import chef from '../chef.svg'
 export default function Navigation() {
   const user = useSelector(state => state.isLogged.user)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   return (
-    <Navbar className="top-nav">
-      <Navbar.Brand href="/" style={{fontFamily: "cursive"}}>
+    <Navbar onClick={()=> history.push('/')} className="top-nav brand">
+      <Navbar.Brand style={{fontFamily: "cursive"}}>
         <img 
           src={chef}
           width="30"
