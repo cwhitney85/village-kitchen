@@ -29,7 +29,7 @@ export const logoutSuccess = () => {
 export const logout = () => {
   return (dispatch) => {
     dispatch(logoutSuccess())
-    axios.get('http://localhost:8000/user/logout/')
+    axios.get('http://localhost:8000/user/logout')
   }
 }
 
