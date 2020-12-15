@@ -49,6 +49,7 @@ function Register(props) {
   )
 }
 
+
 const mapStateToProps = (state) => {
   return {
     authenticated: state.isLogged.user !== null,
