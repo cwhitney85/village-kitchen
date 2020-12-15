@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../actions/index'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import chef from '../chef.svg'
 
 export default function Navigation() {
+  const user = useSelector(state => state.isLogged.user)
   const dispatch = useDispatch()
 
   return (
@@ -22,9 +23,12 @@ export default function Navigation() {
         Village Kitchen</Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
         <Nav className="flex-row">
-          <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
-          <Nav.Link href="/login">Log In</Nav.Link>
-          <Nav.Link href="/register">Sign Up</Nav.Link>
+          {user
+          ? <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
+          : <>
+            <Nav.Link href="/login">Log In</Nav.Link>
+            <Nav.Link href="/register">Sign Up</Nav.Link>
+            </>}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
