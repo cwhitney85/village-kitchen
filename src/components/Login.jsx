@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch, connect } from 'react-redux'
 import { login } from '../actions/index'
 import Button from 'react-bootstrap/Button'
@@ -8,6 +9,7 @@ import Form from 'react-bootstrap/Form'
 function Login(props) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const history = useHistory()
   
 
   const loginSubmit = (e) => {
@@ -15,6 +17,7 @@ function Login(props) {
     props.login(email, password)
     setEmail()
     setPassword()
+    history.push('/')
   }
 
 
