@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch, connect, MapStateToProps } from 'react-redux'
+import axios from 'axios';
+import { useSelector, useDispatch, connect } from 'react-redux'
 import { login } from '../actions/index'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-export default function Login() {
+function Login(props) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const isLogged = useSelector(state => state.isLogged)
-  const dispatch = useDispatch()
+  
 
   const loginSubmit = (e) => {
     e.preventDefault()
-    dispatch(login())
+    props.login(email, password)
+    setEmail()
+    setPassword()
   }
 
 
@@ -31,3 +33,19 @@ export default function Login() {
     </Form>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.isLogged.user !== null,
+    loading: state.isLogged.loading,
+    error: state.isLogged.error
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (email, password) => dispatch(login(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,21 +1,76 @@
 import axios from 'axios'
 
-export const increment = (num) => {
+export const loginStart = () => {
   return {
-    type: 'INCREMENT',
-    payload: num
+    type: 'LOGIN_START'
   }
 }
 
-export const decrement = () => {
+export const loginSuccess = (user) => {
   return {
-    type: 'DECREMENT'
+    type: 'LOGIN_SUCCESS',
+    payload: user
   }
 }
 
-export const login = () => {
+export const loginFail = (error) => {
   return {
-    type: 'SIGN_IN'
+    type: 'LOGIN_FAIL',
+    payload: error
+  }
+}
+
+export const logoutSuccess = () => {
+  return {
+    type: 'LOGOUT_SUCCESS'
+  }
+}
+
+export const logout = () => {
+  return (dispatch) => {
+    dispatch(logoutSuccess())
+    axios.get('http://localhost:8000/user/logout/')
+  }
+}
+
+export const login = (email, password) => {
+  return (dispatch) => {
+    dispatch(loginStart())
+    axios.post('http://localhost:8000/user/login', {
+      email: email,
+      password: password
+    })
+    .then(res => {
+      console.log(res.data)
+      const user = res.data.data
+      dispatch(loginSuccess(user))
+    })
+    .catch(error => {
+      const errMsg = error.message
+      dispatch(loginFail(errMsg))
+    })
+  }
+}
+
+export const signup = (firstName, lastName, email, password, address) => {
+  return (dispatch) => {
+    dispatch(loginStart())
+    axios.post('http://localhost:8000/user/register/', {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      address: address
+    })
+    .then(res => {
+      console.log(res.data)
+      const user = res.data
+      dispatch(loginSuccess(user))
+    })
+    .catch(error => {
+      const errMsg = error.message
+      dispatch(loginFail(errMsg))
+    })
   }
 }
 
@@ -45,7 +100,7 @@ export const fetchUser = () => {
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(response => {
         // response.data is an array of users
-        
+        const user = response.data
         dispatch(fetchUserSuccess(user))
       })
       .catch(error => {
@@ -55,14 +110,3 @@ export const fetchUser = () => {
   }
 }
 
-// export const fetchPosts = () => dispatch => {
-//   console.log('fetching')
-//   fetch('https://jsonplaceholder.typicode.com/posts')
-//   .then(res => res.json())
-//   .then(posts => 
-//     dispatch({
-//       type: 'FETCH_POSTS',
-//       payload: posts
-//     })
-//   )
-// }
