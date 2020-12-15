@@ -1,13 +1,26 @@
 import React, { useState } from 'react'
+import axios from 'axios';
+import { connect } from 'react-redux'
+import { signup } from '../actions/index'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-export default function Register() {
+function Register(props) {
   const [firstName, setFirstName] = useState()
   const [lastName, setLastName] = useState()
   const [email, setEmail] = useState()
   const [address, setAddress] = useState()
   const [password, setPassword] = useState()
+
+  const signupSubmit = (e) => {
+    e.preventDefault()
+    props.signup(firstName, lastName, email, address, password)
+    setFirstName()
+    setLastName()
+    setEmail()
+    setAddress()
+    setPassword()
+  }
 
   return (
     <Form>
@@ -35,3 +48,19 @@ export default function Register() {
     </Form>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.isLogged.user !== null,
+    loading: state.isLogged.loading,
+    error: state.isLogged.error
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signup: (firstName, lastName, email, password, address) => dispatch(signup(firstName, lastName, email, password, address))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)
