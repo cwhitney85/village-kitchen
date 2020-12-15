@@ -2,7 +2,6 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 import ReactDOM from 'react-dom';
-// import thunk from 'redux-thunk';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
