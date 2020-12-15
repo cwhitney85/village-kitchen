@@ -22,9 +22,12 @@ export default function Navigation() {
         />{' '}
         Village Kitchen</Navbar.Brand>
       <Navbar.Collapse className="justify-content-end">
-        <Nav className="flex-row">
+        <Nav className="flex-row test">
           {user
-          ? <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
+          ? <>
+            <Navbar.Text className="userFirstName">Hi, {user.first_name}</Navbar.Text>
+            <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
+            </>
           : <>
             <Nav.Link href="/login">Log In</Nav.Link>
             <Nav.Link href="/register">Sign Up</Nav.Link>
