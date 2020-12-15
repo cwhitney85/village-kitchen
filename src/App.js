@@ -23,6 +23,15 @@ export default function App() {
           <Route exact path="/">
             <Home/>
           </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/register">
+            <Register/>
+          </Route>
+          <Route path="/newcook">
+            <NewCook/>
+          </Route>
           {/* <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register}/>
