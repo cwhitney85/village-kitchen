@@ -52,15 +52,15 @@ export const login = (email, password) => {
   }
 }
 
-export const signup = (firstName, lastName, email, password, address) => {
+export const signup = (firstName, lastName, email, address, password) => {
   return (dispatch) => {
     dispatch(loginStart())
-    axios.post('http://localhost:8000/user/register/', {
+    axios.post('http://localhost:8000/user/register', {
       first_name: firstName,
       last_name: lastName,
       email: email,
-      password: password,
-      address: address
+      address: address,
+      password: password
     })
     .then(res => {
       console.log(res.data)

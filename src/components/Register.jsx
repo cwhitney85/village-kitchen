@@ -23,7 +23,7 @@ function Register(props) {
   }
 
   return (
-    <Form>
+    <Form onSubmit={signupSubmit}>
       <Form.Group controlId="firstName">
         <Form.Label>First Name:</Form.Label>
         <Form.Control type="text" name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)}/>
@@ -44,7 +44,7 @@ function Register(props) {
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" name="password" value={password} onChange={e => setPassword(e.target.value)}/>
       </Form.Group>
-      <Button style={{backgroundColor: "salmon"}}>Submit</Button>
+      <Button type="submit" style={{backgroundColor: "salmon"}}>Submit</Button>
     </Form>
   )
 }
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signup: (firstName, lastName, email, password, address) => dispatch(signup(firstName, lastName, email, password, address))
+    signup: (firstName, lastName, email, address, password) => dispatch(signup(firstName, lastName, email, address, password))
   }
 }
 
