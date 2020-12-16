@@ -29,3 +29,8 @@ form {
 .brand {
   cursor: pointer;
 }
+
+.welcome {
+  margin: 25px auto;
+  text-align: center;
+}
