@@ -20,14 +20,29 @@ function MealsContainer() {
 
   return (
     <div>
-      {isLoading ? <h2>Loading...</h2> :
-      <ul>
+      {isLoading ? <h2>Loading...</h2> : 
+      <CardDeck>
         {meals.map(item => (
-          <li key={item.id}>{item.cuisine}</li>
+          <Card key={item.id}>
+            <Card.Img variant="top" src={item.image}/>
+            <Card.Body>
+              <Card.Title>{item.name}</Card.Title>
+              <Card.Text>{item.recipe}</Card.Text>
+            </Card.Body>
+          </Card>
         ))}
-      </ul>
+      </CardDeck>
       }
     </div>
+    // <div>
+    //   {isLoading ? <h2>Loading...</h2> :
+    //   <ul>
+    //     {meals.map(item => (
+    //       <li key={item.id}>{item.cuisine}</li>
+    //     ))}
+    //   </ul>
+    //   }
+    // </div>
   )
 }
 
