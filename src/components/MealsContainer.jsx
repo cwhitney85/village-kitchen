@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CardGroup, Card, CardDeck, CardImg } from 'react-bootstrap'
+import { CardGroup, Card, CardDeck, CardImg, CardColumns } from 'react-bootstrap'
 import MealCards from './MealCards'
 
 function MealsContainer() {
@@ -21,7 +21,7 @@ function MealsContainer() {
   return (
     <div>
       {isLoading ? <h2>Loading...</h2> : 
-      <CardDeck>
+      <CardColumns>
         {meals.map(item => (
           <Card key={item.id}>
             <Card.Img variant="top" src={item.image}/>
@@ -31,7 +31,7 @@ function MealsContainer() {
             </Card.Body>
           </Card>
         ))}
-      </CardDeck>
+      </CardColumns>
       }
     </div>
     // <div>
