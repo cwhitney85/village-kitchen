@@ -4,26 +4,30 @@ import { CardGroup, Card, CardDeck, CardImg } from 'react-bootstrap'
 import MealCards from './MealCards'
 
 function MealsContainer() {
-  const [meals, setMeals] = useState([])
+  const [meals, setMeals] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getMeals = async () => {
-      const mealsData = await axios('http://localhost:8000/api/v1/meals/');
+      const result = await axios.get('http://localhost:8000/api/v1/meals/')
 
-      setMeals(mealsData.data.data);
+      setMeals(result.data.data)
+      setIsLoading(false)
     }
+
     getMeals()
-    console.log(meals)
-  }, []);
-  
+  }, [])
+
   return (
-    <ul>
-      {meals.map(meal => {
-        <li key={meal.id}>
-          {meal.cuisine}
-        </li>
-      })}
-    </ul>
+    <div>
+      {isLoading ? <h2>Loading...</h2> :
+      <ul>
+        {meals.map(item => (
+          <li key={item.id}>{item.cuisine}</li>
+        ))}
+      </ul>
+      }
+    </div>
   )
 }
 
