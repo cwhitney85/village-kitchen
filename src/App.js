@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import NewCook from './components/NewCook';
 import Meal from './components/Meal';
+import Cook from './components/Cook';
 
 
 export default function App() {
@@ -34,6 +35,9 @@ export default function App() {
           </Route>
           <Route path="/meals/:id">
             <Meal/>
+          </Route>
+          <Route path="/cook/:cookId">
+            <Cook/>
           </Route>
           {/* <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login} />

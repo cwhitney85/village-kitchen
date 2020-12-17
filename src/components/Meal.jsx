@@ -1,5 +1,7 @@
-import Axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import LinkContainer from 'react-router-bootstrap'
 import axios from 'axios'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Image from 'react-bootstrap/Image'
@@ -9,7 +11,6 @@ import Container from 'react-bootstrap/Container'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import Button from 'react-bootstrap/Button'
-import { useParams } from 'react-router-dom'
 import FigureCaption from 'react-bootstrap/esm/FigureCaption'
 
 function Meal() {
@@ -44,7 +45,7 @@ function Meal() {
             <li>Cuisine: {meal.data.cuisine}</li>
             <li>Price: ${meal.data.price}</li>
             <li>Units: {meal.data.units}</li>
-            <li>Created by: {meal.data.cook.username}</li>
+            <li>Created by: <Link to={`/cook/${meal.data.cook.user.id}`}>{meal.data.cook.username}</Link></li>
           </ul>
           <Button style={{backgroundColor: "salmon"}}>Buy this meal!</Button>
         </Container>
