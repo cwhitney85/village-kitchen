@@ -29,7 +29,7 @@ export const logoutSuccess = () => {
 export const logout = () => {
   return (dispatch) => {
     dispatch(logoutSuccess())
-    axios.get('http://localhost:8000/user/logout')
+    axios.get('http://localhost:8000/user/logout', {withCredentials: true})
   }
 }
 
@@ -39,7 +39,7 @@ export const login = (email, password) => {
     axios.post('http://localhost:8000/user/login', {
       email: email,
       password: password
-    })
+    }, {withCredentials: true})
     .then(res => {
       console.log(res.data)
       const user = res.data.data
@@ -61,7 +61,7 @@ export const signup = (firstName, lastName, email, address, password) => {
       email: email,
       address: address,
       password: password
-    })
+    }, {withCredentials: true})
     .then(res => {
       console.log(res.data)
       const user = res.data
@@ -102,7 +102,7 @@ export const newCook = (userName, specialty, avatar, banner) => {
       specialty: specialty,
       avatar: avatar,
       banner: banner
-    })
+    }, {withCredentials: true})
     .then(res => {
       console.log(res.data)
       const cook = res.data
@@ -118,7 +118,7 @@ export const newCook = (userName, specialty, avatar, banner) => {
 export const getCook = () => {
   return (dispatch) => {
     dispatch(getCookRequest)
-    axios.get('http://localhost:8000/api/v1/cooks')
+    axios.get('http://localhost:8000/api/v1/cooks', {withCredentials: true})
     .then(res => {
       const cook = res.data
       console.log(cook)

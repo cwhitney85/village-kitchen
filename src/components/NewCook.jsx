@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { newCook } from '../actions/index'
 import { connect, useSelector, useDispatch } from 'react-redux'
@@ -11,6 +12,15 @@ function NewCook() {
   const [avatar, setAvatar] = useState()
   const [banner, setBanner] = useState()
   const dispatch = useDispatch()
+  const history = useHistory()
+
+  useEffect(() => {
+    const test = async () => {
+      const result = await axios.get('http://localhost:8000/api/v1/cooks/test', {withCredentials: true})
+      return result
+    }
+    test()
+  }, [])
 
   const newCookSubmit = (e) => {
     e.preventDefault()
@@ -19,6 +29,7 @@ function NewCook() {
     setSpecialty()
     setAvatar()
     setBanner()
+    history.push('/')
   }
 
   return (
