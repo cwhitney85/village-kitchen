@@ -74,3 +74,60 @@ export const signup = (firstName, lastName, email, address, password) => {
   }
 }
 
+export const getCookRequest = () => {
+  return {
+    type: 'GET_COOK_REQUEST'
+  }
+}
+
+export const getCookSuccess = (cook) => {
+  return {
+    type: 'GET_COOK_SUCCESS',
+    payload: cook
+  }
+}
+
+export const getCookFail = (error) => {
+  return {
+    type: 'GET_COOK_FAIL',
+    payload: error
+  }
+}
+
+export const newCook = (userName, specialty, location, avatar, banner) => {
+  return (dispatch) => {
+    dispatch(getCookRequest())
+    axios.post('localhost:8000/api/v1/cooks', {
+      username: userName,
+      specialty: specialty,
+      user_location: location,
+      avatar: avatar,
+      banner: banner
+    })
+    .then(res => {
+      console.log(res.data)
+      const cook = res.data
+      dispatch(getCookSuccess(cook))
+    })
+    .catch(error => {
+      const errMsg = error.message
+      dispatch(getCookFail(errMsg))
+    })
+  }
+}
+
+export const getCook = (num) => {
+  return (dispatch) => {
+    dispatch(getCookRequest)
+    axios.get('http://localhost:8000/api/v1/cooks')
+    .then(res => {
+      const cook = res.data
+      console.log(cook)
+      dispatch(getCookSuccess(cook))
+    })
+    .catch(error => {
+      const errMsg = error.message
+      dispatch(getCookFail(errMsg))
+    })
+  }
+}
