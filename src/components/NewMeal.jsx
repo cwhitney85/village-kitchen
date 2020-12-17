@@ -13,8 +13,31 @@ function NewMeal() {
   const [units, setUnits] = useState()
   const [recipe, setRecipe] = useState()
   const [image, setImage] = useState()
+  const history = useHistory()
+
+  const submitMeal = (e) => {
+    e.preventDefault()
+    axios.post('http://localhost:8000/api/v1/meals/3',{
+      name: name,
+      cuisine: cuisine,
+      price: price,
+      units: units,
+      recipe: recipe,
+      image: image
+    }, {withCredentials: true})
+      .then(response => {
+        console.log(response.data)
+        setName()
+        setCuisine()
+        setPrice()
+        setUnits()
+        setRecipe()
+        setImage()
+        history.push('/')
+      })
+  }
   return (
-    <Form >
+    <Form onSubmit={submitMeal}>
       <Form.Group controlId="name">
         <Form.Label>Name:</Form.Label>
         <Form.Control type="text" name="name" value={name} onChange={e => setName(e.target.value)}/>
