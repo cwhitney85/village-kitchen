@@ -10,6 +10,7 @@ import Register from './components/Register';
 import NewCook from './components/NewCook';
 import Meal from './components/Meal';
 import Cook from './components/Cook';
+import NewMeal from './components/NewMeal'
 
 
 export default function App() {
@@ -32,6 +33,9 @@ export default function App() {
           </Route>
           <Route path="/newcook">
             <NewCook/>
+          </Route>
+          <Route path="/newmeal">
+            <NewMeal/>
           </Route>
           <Route path="/meals/:id">
             <Meal/>
