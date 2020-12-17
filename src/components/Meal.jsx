@@ -8,6 +8,7 @@ import FigureImage from 'react-bootstrap/FigureImage'
 import Container from 'react-bootstrap/Container'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import Button from 'react-bootstrap/Button'
 import { useParams } from 'react-router-dom'
 import FigureCaption from 'react-bootstrap/esm/FigureCaption'
 
@@ -43,7 +44,9 @@ function Meal() {
             <li>Cuisine: {meal.data.cuisine}</li>
             <li>Price: ${meal.data.price}</li>
             <li>Units: {meal.data.units}</li>
+            <li>Created by: {meal.data.cook.username}</li>
           </ul>
+          <Button style={{backgroundColor: "salmon"}}>Buy this meal!</Button>
         </Container>
       </Jumbotron>
       // <Jumbotron>
