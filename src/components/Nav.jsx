@@ -35,6 +35,9 @@ export default function Navigation() {
             <LinkContainer to="/newcook">
               <Nav.Link>Become a Cook!</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/newmeal">
+              <Nav.Link>Make a meal!</Nav.Link>
+            </LinkContainer>
             <Button onClick={() => dispatch(logout())} variant="outline-dark">Log Out</Button>
             </>
           : <>
