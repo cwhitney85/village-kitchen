@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { signup } from '../actions/index'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -11,6 +12,7 @@ function Register(props) {
   const [email, setEmail] = useState()
   const [address, setAddress] = useState()
   const [password, setPassword] = useState()
+  const history = useHistory()
 
   const signupSubmit = (e) => {
     e.preventDefault()
@@ -20,6 +22,7 @@ function Register(props) {
     setEmail()
     setAddress()
     setPassword()
+    history.push('/')
   }
 
   return (
