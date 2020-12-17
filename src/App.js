@@ -8,7 +8,7 @@ import Navigation from './components/Nav';
 import Login from './components/Login';
 import Register from './components/Register';
 import NewCook from './components/NewCook';
-
+import Meal from './components/Meal';
 
 
 export default function App() {
@@ -20,10 +20,26 @@ export default function App() {
       <Navigation/>
       <Container>
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact>
+            <Home/>
+          </Route>
+          <Route path="/login">
+            <Login/>
+          </Route>
+          <Route path="/register">
+            <Register/>
+          </Route>
+          <Route path="/newcook">
+            <NewCook/>
+          </Route>
+          <Route path="/meals/:id">
+            <Meal/>
+          </Route>
+          {/* <Route path="/" exact component={Home}/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register}/>
           <Route path="/newcook" component={NewCook}/>
+          <Route path="/test" component={MealCards}/> */}
         </Switch>
       </Container>
     </Router>
