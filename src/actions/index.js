@@ -94,13 +94,12 @@ export const getCookFail = (error) => {
   }
 }
 
-export const newCook = (userName, specialty, location, avatar, banner) => {
+export const newCook = (userName, specialty, avatar, banner) => {
   return (dispatch) => {
     dispatch(getCookRequest())
-    axios.post('localhost:8000/api/v1/cooks', {
+    axios.post('http://localhost:8000/api/v1/cooks/', {
       username: userName,
       specialty: specialty,
-      user_location: location,
       avatar: avatar,
       banner: banner
     })
@@ -116,7 +115,7 @@ export const newCook = (userName, specialty, location, avatar, banner) => {
   }
 }
 
-export const getCook = (num) => {
+export const getCook = () => {
   return (dispatch) => {
     dispatch(getCookRequest)
     axios.get('http://localhost:8000/api/v1/cooks')
