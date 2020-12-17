@@ -13,11 +13,12 @@ function NewMeal() {
   const [units, setUnits] = useState()
   const [recipe, setRecipe] = useState()
   const [image, setImage] = useState()
+  const userID = useSelector(state => state.isLogged.user.id)
   const history = useHistory()
 
   const submitMeal = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8000/api/v1/meals/3',{
+    axios.post('http://localhost:8000/api/v1/meals/' + userID,{
       name: name,
       cuisine: cuisine,
       price: price,
