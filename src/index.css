@@ -34,3 +34,18 @@ form {
   margin: 25px auto;
   text-align: center;
 }
+
+.mealJumbo {
+  margin: 25px auto;
+  background-color: white;
+  border: solid gold 1px;
+}
+
+.meal {
+  text-align: center;
+  margin: 5% auto;
+}
+
+.jumboImage {
+  max-height: 75%;
+}
