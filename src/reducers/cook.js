@@ -23,6 +23,12 @@ const cookReducer = (state = initialState, action) => {
         cook: null,
         error: action.payload
       }
+    case 'REMOVE_COOK':
+      return {
+        loading: false,
+        cook: null,
+        error: ''
+      }
     default:
       return state
   }
