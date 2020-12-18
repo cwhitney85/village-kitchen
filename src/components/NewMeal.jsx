@@ -18,7 +18,7 @@ function NewMeal() {
 
   const submitMeal = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8000/api/v1/meals/' + userID,{
+    axios.post(process.env.REACT_APP_API_URL + '/api/v1/meals/' + userID,{
       name: name,
       cuisine: cuisine,
       price: price,

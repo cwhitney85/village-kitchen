@@ -16,8 +16,8 @@ function Cook() {
 
   useEffect(() => {
     const getCook = async () => {
-      const cookResult = await axios.get(`http://localhost:8000/api/v1/cooks/${cookId}`)
-      const mealResult = await axios.get(`http://localhost:8000/api/v1/meals/madeby/${cookId}`)
+      const cookResult = await axios.get(process.env.REACT_APP_API_URL + `/api/v1/cooks/${cookId}`)
+      const mealResult = await axios.get(process.env.REACT_APP_API_URL + `/api/v1/meals/madeby/${cookId}`)
       console.log(cookResult.data.data)
       console.log(mealResult.data)
       setCook(cookResult.data)

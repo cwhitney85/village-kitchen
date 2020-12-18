@@ -20,7 +20,7 @@ function Meal() {
 
   useEffect(() => {
     const getMeal = async () => {
-      const result = await axios.get(`http://localhost:8000/api/v1/meals/${id}`)
+      const result = await axios.get(process.env.REACT_APP_API_URL + `/api/v1/meals/${id}`)
 
       console.log(result.data)
       setMeal(result.data)

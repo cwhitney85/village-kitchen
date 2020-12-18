@@ -16,7 +16,7 @@ function NewCook() {
 
   useEffect(() => {
     const test = async () => {
-      const result = await axios.get('http://localhost:8000/api/v1/cooks/test', {withCredentials: true})
+      const result = await axios.get(process.env.REACT_APP_API_URL + '/api/v1/cooks/test', {withCredentials: true})
       return result
     }
     test()

@@ -29,14 +29,14 @@ export const logoutSuccess = () => {
 export const logout = () => {
   return (dispatch) => {
     dispatch(logoutSuccess())
-    axios.get('http://localhost:8000/user/logout', {withCredentials: true})
+    axios.get(process.env.REACT_APP_API_URL + '/user/logout', {withCredentials: true})
   }
 }
 
 export const login = (email, password) => {
   return (dispatch) => {
     dispatch(loginStart())
-    axios.post('http://localhost:8000/user/login', {
+    axios.post(process.env.REACT_APP_API_URL + '/user/login', {
       email: email,
       password: password
     }, {withCredentials: true})
@@ -55,7 +55,7 @@ export const login = (email, password) => {
 export const signup = (firstName, lastName, email, address, password) => {
   return (dispatch) => {
     dispatch(loginStart())
-    axios.post('http://localhost:8000/user/register', {
+    axios.post(process.env.REACT_APP_API_URL + '/user/register', {
       first_name: firstName,
       last_name: lastName,
       email: email,
@@ -97,7 +97,7 @@ export const getCookFail = (error) => {
 export const newCook = (userName, specialty, avatar, banner) => {
   return (dispatch) => {
     dispatch(getCookRequest())
-    axios.post('http://localhost:8000/api/v1/cooks/', {
+    axios.post(process.env.REACT_APP_API_URL + '/api/v1/cooks/', {
       username: userName,
       specialty: specialty,
       avatar: avatar,
@@ -118,7 +118,7 @@ export const newCook = (userName, specialty, avatar, banner) => {
 export const getCook = () => {
   return (dispatch) => {
     dispatch(getCookRequest)
-    axios.get('http://localhost:8000/api/v1/cooks', {withCredentials: true})
+    axios.get(process.env.REACT_APP_API_URL + '/api/v1/cooks', {withCredentials: true})
     .then(res => {
       const cook = res.data
       console.log(cook)
