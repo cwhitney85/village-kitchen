@@ -42,11 +42,6 @@ export default function App() {
           <Route path="/cook/:cookId">
             <Cook/>
           </Route>
-          {/* <Route path="/" exact component={Home}/>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register}/>
-          <Route path="/newcook" component={NewCook}/>
-          <Route path="/test" component={MealCards}/> */}
         </Switch>
       </Container>
     </Router>

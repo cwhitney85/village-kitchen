@@ -50,16 +50,6 @@ function Meal() {
           <Button style={{backgroundColor: "salmon"}}>Buy this meal!</Button>
         </Container>
       </Jumbotron>
-      // <Jumbotron>
-      // <h1>{meal.data.name}</h1>
-      // <img src={meal.data.image} style={{width: "50%", margin: "0 auto"}}/>
-      // <h3>{meal.data.cuisine}</h3>
-      // <ul>
-      //   <li>Price: ${meal.data.price}</li>
-      //   <li>Units: {meal.data.units}</li>
-      // </ul>
-      // <p>{meal.data.recipe}</p>
-      // </Jumbotron>
       }
     </div>
   )

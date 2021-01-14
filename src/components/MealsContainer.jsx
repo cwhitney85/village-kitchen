@@ -37,15 +37,6 @@ function MealsContainer() {
       </CardColumns>
       }
     </div>
-    // <div>
-    //   {isLoading ? <h2>Loading...</h2> :
-    //   <ul>
-    //     {meals.map(item => (
-    //       <li key={item.id}>{item.cuisine}</li>
-    //     ))}
-    //   </ul>
-    //   }
-    // </div>
   )
 }
 
