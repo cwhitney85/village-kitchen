@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="welcome">Find a home cooked meal near you!</h1>
+      <h1 className="welcome">Find a home cooked meal near you today!</h1>
       <MealsContainer/>
     </div>
   )
